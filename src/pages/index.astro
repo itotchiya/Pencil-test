@@ -4,6 +4,7 @@ import Header from '../components/Header.vue';
 import Hero from '../components/Hero.vue';
 import TrustedBy from '../components/TrustedBy.vue';
 import Features from '../components/Features.vue';
+import Benefits from '../components/Benefits.vue';
 import HowItWorks from '../components/HowItWorks.vue';
 import SocialProof from '../components/SocialProof.vue';
 import Pricing from '../components/Pricing.vue';
@@ -17,6 +18,7 @@ import Footer from '../components/Footer.vue';
     <Hero client:load />
     <TrustedBy client:visible />
     <Features client:visible />
+    <Benefits client:visible />
     <HowItWorks client:visible />
     <SocialProof client:visible />
     <Pricing client:visible />
@@ -78,6 +80,49 @@ import Footer from '../components/Footer.vue';
           y: 0,
           duration: 0.6,
           delay: index * 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            end: 'top 50%',
+            scrub: 1
+          }
+        }
+      );
+      
+      // Scale down on scroll out
+      gsap.to(card, {
+        scale: 0.95,
+        opacity: 0.7,
+        scrollTrigger: {
+          trigger: card,
+          start: 'bottom 20%',
+          end: 'bottom 0%',
+          scrub: 1
+        }
+      });
+      
+      // Hover effect
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, { y: -8, duration: 0.3, ease: 'power2.out' });
+      });
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.out' });
+      });
+    });
+
+    // Benefits cards scroll scale effect
+    const benefitCards = document.querySelectorAll('.benefit-card');
+    benefitCards.forEach((card, index) => {
+      // Entrance animation
+      gsap.fromTo(card,
+        { scale: 0.9, opacity: 0, y: 50 },
+        {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: index * 0.08,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: card,
