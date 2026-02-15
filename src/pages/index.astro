@@ -66,27 +66,41 @@ import Footer from '../components/Footer.vue';
       }
     );
 
-    // Feature cards entrance with stagger
-    gsap.fromTo('.feature-card',
-      { opacity: 0, y: 50, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '#features',
-          start: 'top 70%',
-          once: true
-        }
-      }
-    );
-
-    // Feature cards hover effect
+    // Feature cards scroll scale effect
     const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card) => {
+    featureCards.forEach((card, index) => {
+      // Entrance animation
+      gsap.fromTo(card,
+        { scale: 0.9, opacity: 0, y: 50 },
+        {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: index * 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            end: 'top 50%',
+            scrub: 1
+          }
+        }
+      );
+      
+      // Scale down on scroll out
+      gsap.to(card, {
+        scale: 0.95,
+        opacity: 0.7,
+        scrollTrigger: {
+          trigger: card,
+          start: 'bottom 20%',
+          end: 'bottom 0%',
+          scrub: 1
+        }
+      });
+      
+      // Hover effect
       card.addEventListener('mouseenter', () => {
         gsap.to(card, { y: -8, duration: 0.3, ease: 'power2.out' });
       });
@@ -115,10 +129,8 @@ import Footer from '../components/Footer.vue';
           }
         }
       );
-    });
-
-    // Steps scale down on scroll out
-    stepCards.forEach((card) => {
+      
+      // Scale down on scroll out
       gsap.to(card, {
         scale: 0.92,
         opacity: 0.7,
@@ -204,10 +216,8 @@ import Footer from '../components/Footer.vue';
           }
         }
       );
-    });
-
-    // Testimonials scale down on scroll out
-    testimonialCards.forEach((card) => {
+      
+      // Scale down on scroll out
       gsap.to(card, {
         scale: 0.95,
         opacity: 0.8,
@@ -240,10 +250,8 @@ import Footer from '../components/Footer.vue';
           }
         }
       );
-    });
-
-    // Pricing cards scale down on scroll out
-    pricingCards.forEach((card) => {
+      
+      // Scale down on scroll out
       gsap.to(card, {
         scale: 0.95,
         opacity: 0.8,
@@ -295,41 +303,6 @@ import Footer from '../components/Footer.vue';
         end: 'bottom top',
         scrub: 1
       }
-    });
-
-    // Feature cards scroll scale effect
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card, index) => {
-      gsap.fromTo(card,
-        { scale: 0.9, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.6,
-          delay: index * 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            end: 'top 50%',
-            scrub: 1
-          }
-        }
-      );
-    });
-
-    // Feature cards scroll scale down when leaving
-    featureCards.forEach((card) => {
-      gsap.to(card, {
-        scale: 0.95,
-        opacity: 0.7,
-        scrollTrigger: {
-          trigger: card,
-          start: 'bottom 20%',
-          end: 'bottom 0%',
-          scrub: 1
-        }
-      });
     });
 
     // Footer reveal animation
