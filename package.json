@@ -1,0 +1,25 @@
+{
+  "name": "taskflow-landing",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.15.0",
+    "@astrojs/vue": "^4.5.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "vue": "^3.4.0",
+    "gsap": "^3.12.5",
+    "lucide-vue-next": "^0.400.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  }
+}

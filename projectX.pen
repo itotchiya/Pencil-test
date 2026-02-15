@@ -1,0 +1,17 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "F757B",
+      "x": -22103,
+      "y": -8078,
+      "name": "Frame 1",
+      "clip": true,
+      "width": 8578,
+      "height": 4909,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    }
+  ]
+}
